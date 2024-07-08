@@ -1,4 +1,5 @@
 # Javascript Projects
 
-1. Calculator
-2. Hex-color-generator
+* Calculator
+* Hex-color-generator
+* Snake-game
