@@ -17,12 +17,13 @@ function draw() {
   board.innerHTML = "";
   drawSnake();
   drawFood();
+  updateScore();
 }
 
 // Drawing snake
 function drawSnake() {
   snake.forEach((segment) => {
-    let snakeElement = createGameElement("div", "snake");
+    const snakeElement = createGameElement("div", "snake");
     setPosition(snakeElement, segment);
     board.appendChild(snakeElement);
   });
@@ -43,9 +44,11 @@ function setPosition(element, position) {
 
 // Function to draw food
 function drawFood() {
+    if(gameStarted) {
     const foodElement = createGameElement("div", "food");
     setPosition(foodElement, food);
     board.appendChild(foodElement);
+    }
 }
 
 // Function to generate random values for food
@@ -148,7 +151,7 @@ function checkCollisions(){
   }
 
   for(let i=1; i<snake.length; i++){
-    if(head.x === snake[i].x || head.y === snake[i].y)
+    if(head.x === snake[i].x && head.y === snake[i].y)
       resetGame();
   }
 }
